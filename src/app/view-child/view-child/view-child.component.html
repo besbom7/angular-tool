@@ -1,0 +1,4 @@
+
+<button (click)="onShow = !onShow" >toggle</button>
+<div *ngIf="onShow" #divTest >TEST</div>
+<div>{{_divTest | json}}</div>

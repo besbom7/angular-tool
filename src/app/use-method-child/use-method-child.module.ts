@@ -1,0 +1,22 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
+import {StateService} from "./state-service";
+
+@NgModule({
+  declarations: [
+    ParentComponent,
+    ChildComponent
+  ],
+  imports: [
+    CommonModule
+  ],
+  exports : [
+    ParentComponent,
+    ChildComponent
+  ],
+  //solution 3 ***
+  providers : [StateService]
+})
+export class UseMethodChildModule { }

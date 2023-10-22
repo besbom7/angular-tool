@@ -11,3 +11,104 @@
   <app-root></app-root>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera Image Capture Example</title>
+</head>
+<body>
+    <h1>Camera Image Capture Example</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="startButton">Start Capture</button>
+    <button id="stopButton">Stop Capture</button>
+    <button id="captureButton" disabled>Capture Image</button>
+    <canvas id="canvas" style="display: none"></canvas>
+    <img id="capturedImage" style="display: none">
+    <p id="errorText" style="color: red;"></p>
+
+    <script>
+        const video = document.getElementById('video');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const captureButton = document.getElementById('captureButton');
+        const canvas = document.getElementById('canvas');
+        const capturedImage = document.getElementById('capturedImage');
+        const errorText = document.getElementById('errorText');
+
+        let stream;
+
+        // Function to start capturing video from the camera
+        async function startCapture() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                captureButton.disabled = false;
+                errorText.textContent = '';
+            } catch (error) {
+                errorText.textContent = 'Error accessing the camera: ' + error.message;
+                console.error('Error accessing the camera: ', error);
+            }
+        }
+
+             // Function to stop capturing video
+             function stopCapture() {
+            const stream = video.srcObject;
+            const tracks = stream.getTracks();
+
+            tracks.forEach(track => track.stop());
+            video.srcObject = null;
+        }
+
+
+        // Function to capture an image from the video stream
+        function captureImage() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            capturedImage.src = canvas.toDataURL('image/png');
+            capturedImage.style.display = 'block';
+
+            urlToFile(canvas.toDataURL('image/png') , "TEST");
+        }
+
+        async function urlToFile(url , filename ) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const blob = await response.blob();
+  
+        // Create a local file from the blob
+        const file = new File([blob], filename, { type: blob.type });
+  
+        // You can now use the 'file' as a local file, for example, save it or display it.
+        console.log('File:', file);
+      } else {
+        console.error('Failed to fetch the image:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  }
+        startButton.addEventListener('click', startCapture);
+        captureButton.addEventListener('click', captureImage);
+        stopButton.addEventListener('click', stopCapture);
+    </script>
+</body>
+</html> -->
